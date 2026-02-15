@@ -13,12 +13,11 @@ const Card = ({title}, {ratings}, {review}) => {
 
 const App = () => {
   return (
-    <div>
-      <h2>Functional Arrow Component</h2>
+    <div className="card-container">
       <Card title="Lion King" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
-      <Card title="Lion King" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
-      <Card title="Lion King" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
-      <Card title="Lion King" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
+      <Card title="Star Wars" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
+      <Card title="Mufasa" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
+      <Card title="Black Panther" ratings={5} review={cool} actors={[{name: Simba}, {name: Hakuna}, {name:Matata},]} />
     </div>
   )
 }
@@ -26,4 +25,3 @@ const App = () => {
 
 
 export default App
-
