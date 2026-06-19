@@ -15,16 +15,16 @@ const API_OPTIONS = {
 }
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState( initialState: '');
-  const [errorMessage, setErrorMessage] = useState( initialState: '');
-  const [movieList, setMovieList] = useState( initialState: []);
-  const [isLoading, setIsLoading] = useState( initialState: true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [movieList, setMovieList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
  
   const fetchMovies = async () => {
 
-    setIsLoading( value: true);
-    setErrorMessage( value:'');
+    setIsLoading(true);
+    setErrorMessage('');
 
     try { 
       const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
@@ -37,25 +37,25 @@ const App = () => {
 
       const data = await response.json();
       if (data.Response == 'False') {
-        setErrorMessage(value: data.Error || 'Failed to fetch movies');
-        setMovieList(value: []);
+        setErrorMessage(data.Error || 'Failed to fetch movies');
+        setMovieList([]);
         return;
       }
 
-      setMovieList(value: data.results || []); 
+      setMovieList(data.results || []);
 
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
-      setErrorMessage( value `Error fetching movies please try again later.`);
+      setErrorMessage(`Error fetching movies please try again later.`);
     } finally {
-      setIsLoading(value: false);
+      setIsLoading(false);
     }
     
   }
 
-  useEffect( effect: () => {
+  useEffect(() => {
     fetchMovies();
-  }, deps: []);
+  }, []);
 
   return (
     <main>
@@ -72,7 +72,7 @@ const App = () => {
           <h2> All Movies</h2>
 
         {isLoading ? (
-              <Spinner/>
+              <Spinner />
            ) : errorMessage ? (
              <p className='text-red-500'>{errorMessage}</p>
            ) : (
