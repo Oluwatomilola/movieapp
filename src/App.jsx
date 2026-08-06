@@ -20,8 +20,10 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const [useDebounce, setUseDebounce] = useState(false);
+  
+  //debounce is used to avoid making too many API calls while the user is typing in the search input. It waits for a specified delay (500ms in this case) after the user stops typing before triggering the API call. This helps to reduce unnecessary requests and improve performance.
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  useDebounce(() => setDebouncedSearchTerm, 500, [searchTerm])
  
   const fetchMovies = async (query = '') => {
 
@@ -57,8 +59,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   return (
     <main>
